@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"9ivHY":[function(require,module,exports) {
+})({"1B2dF":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -525,18 +525,35 @@ const renderer = new _three.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 const scene = new _three.Scene();
-const camera = new _three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new _three.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
 const orbit = new _orbitControlsJs.OrbitControls(camera, renderer.domElement);
 orbit.update();
-const axesHelper = new _three.AxesHelper();
+const axesHelper = new _three.AxesHelper(5);
 scene.add(axesHelper);
-camera.position.set(2, 0, 5);
+camera.position.set(10, 10, 10);
 const boxGeometry = new _three.BoxGeometry();
 const boxMaterial = new _three.MeshBasicMaterial({
     color: 65280
 });
 const box = new _three.Mesh(boxGeometry, boxMaterial);
 scene.add(box);
+const planeGeometry = new _three.PlaneGeometry(30, 30);
+const planeMaterial = new _three.MeshBasicMaterial({
+    color: 16777215,
+    side: _three.DoubleSide
+});
+const plane = new _three.Mesh(planeGeometry, planeMaterial);
+scene.add(plane);
+plane.rotation.y = -0.5 * Math.PI;
+const gridHelper = new _three.GridHelper(30, 50);
+scene.add(gridHelper);
+const sphereGeometry = new _three.SphereGeometry(40, 5, 10);
+const sphereMaterial = new _three.MeshBasicMaterial({
+    color: 255,
+    wireframe: true
+});
+const sphere = new _three.Mesh(sphereGeometry, sphereMaterial);
+scene.add(sphere);
 function animate(time) {
     box.rotation.x = time / 1000;
     box.rotation.y = time / 1000;
@@ -30675,7 +30692,7 @@ if (typeof window !== 'undefined') {
     else window.__THREE__ = REVISION;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"3rrmD"}],"3rrmD":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -31395,6 +31412,6 @@ class MapControls extends OrbitControls {
     }
 }
 
-},{"three":"ktPTu","@parcel/transformer-js/src/esmodule-helpers.js":"3rrmD"}]},["9ivHY","dV6cC"], "dV6cC", "parcelRequire3f45")
+},{"three":"ktPTu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1B2dF","dV6cC"], "dV6cC", "parcelRequire3f45")
 
 //# sourceMappingURL=index.e82f28a0.js.map
